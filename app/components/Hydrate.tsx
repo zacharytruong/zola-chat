@@ -1,5 +1,6 @@
 'use client';
 
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { ReactNode, useEffect, useState } from 'react';
 import { ImSpinner9 } from 'react-icons/im';
 
@@ -13,7 +14,7 @@ const Hydrate = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {isHydrated ? (
-        children
+        <UserProvider>{children}</UserProvider>
       ) : (
         <main className="min-h-screen flex justify-center items-center">
           <div className="animate-spin">
