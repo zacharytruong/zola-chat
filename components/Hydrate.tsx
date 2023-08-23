@@ -4,23 +4,11 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { ReactNode, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import CustomLoading from './CustomLoading';
-
-const lightTheme = {
-  primary: '#D9A273',
-  secondary: '#94E1F2',
-  text: '#000',
-  background: '#fff',
-};
-
-const darkTheme = {
-  ...lightTheme,
-  text: '#fff',
-  background: '#000',
-};
+import useStore from '@/customHooks/store';
 
 const Hydrate = ({ children }: { children: ReactNode }) => {
   const [isHydrated, setisHydrated] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState(darkTheme);
+  const theme = useStore((state) => state.theme);
 
   useEffect(() => {
     setisHydrated(true);
@@ -29,11 +17,13 @@ const Hydrate = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {isHydrated ? (
-        <ThemeProvider theme={currentTheme}>
+        <ThemeProvider theme={theme}>
           <UserProvider>{children}</UserProvider>
         </ThemeProvider>
       ) : (
-        <CustomLoading currentTheme={currentTheme} />
+        <div className="min-h-screen flex justify-center items-center">
+          <CustomLoading />
+        </div>
       )}
     </>
   );

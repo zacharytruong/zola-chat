@@ -10,7 +10,9 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
   if (isLoading) {
     return (
-      <CustomLoading />
+      <div className="min-h-screen flex justify-center items-center">
+          <CustomLoading />
+        </div>
     );
   }
   if (!_.isNil(error) && !error) {
@@ -20,5 +22,5 @@ export default function Home() {
     redirect('/api/auth/login');
   }
 
-  return <main>Main page</main>;
+  return <main className='flex-grow'>Main content</main>;
 }

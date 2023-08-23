@@ -1,12 +1,13 @@
-import { ThemeProps } from '@/types/interfaces';
+import useStore from '@/customHooks/store';
 import { ImSpinner9 } from 'react-icons/im';
 import { MainContainer } from './styles/CustomLoading';
 
-const CustomLoading = ({ currentTheme }: { currentTheme?: ThemeProps }) => {
+const CustomLoading = () => {
+  const theme = useStore((state) => state.theme);
   return (
-    <MainContainer className={`min-h-screen flex justify-center items-center`}>
+    <MainContainer className="h-full w-full flex justify-center items-center">
       <div className="animate-spin">
-        <ImSpinner9 size={50} color={currentTheme && currentTheme.primary} />
+        <ImSpinner9 size={50} color={theme.primary} />
       </div>
     </MainContainer>
   );
