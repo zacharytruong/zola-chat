@@ -5,17 +5,19 @@ interface ThemeStoreProps {
   setTheme: () => void;
 }
 
-const darkTheme = {
+const darkTheme: ThemeProps = {
   primary: '#D9A273',
   secondary: '#94E1F2',
   text: '#fff',
-  background: '#000'
+  background: '#000',
+  accent: '#333333'
 };
 
-const lightTheme = {
+const lightTheme: ThemeProps = {
   ...darkTheme,
   text: '#000',
-  background: '#fff'
+  background: '#fff',
+  accent: '#f2f2f2'
 };
 
 const createThemeSlice = (set: any): ThemeStoreProps => ({

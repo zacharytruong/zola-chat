@@ -1,13 +1,4 @@
-interface Auth0UserProps {
-  email: string;
-  email_verified: boolean;
-  name: string;
-  nickname: string;
-  picture: string;
-  sid: string;
-  sub: string;
-  updated_at: string;
-}
+import { Auth0UserProps } from '@/types/interfaces';
 
 const BetaTesterUser: Auth0UserProps = {
   email: 'betatester01@gmail.com',
@@ -21,4 +12,22 @@ const BetaTesterUser: Auth0UserProps = {
   updated_at: '2023-08-22T17:49:14.000Z'
 };
 
-export { type Auth0UserProps, BetaTesterUser };
+const Contacts: Auth0UserProps[] = [
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser,
+  BetaTesterUser
+];
+
+export { BetaTesterUser, Contacts };
